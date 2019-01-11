@@ -1,0 +1,178 @@
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>server-method-override/README · Skazka</title><meta name="viewport" content="width=device-width"/><meta name="generator" content="Docusaurus"/><meta name="description" content="&lt;h1&gt;&lt;a class=&quot;anchor&quot; aria-hidden=&quot;true&quot; id=&quot;server-method-override&quot;&gt;&lt;/a&gt;&lt;a href=&quot;#server-method-override&quot; aria-hidden=&quot;true&quot; class=&quot;hash-link&quot;&gt;&lt;svg class=&quot;hash-link-icon&quot; aria-hidden=&quot;true&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Server Method Override&lt;/h1&gt;
+"/><meta name="docsearch:language" content="en"/><meta property="og:title" content="server-method-override/README · Skazka"/><meta property="og:type" content="website"/><meta property="og:url" content="https://skazkajs.org/index.html"/><meta property="og:description" content="&lt;h1&gt;&lt;a class=&quot;anchor&quot; aria-hidden=&quot;true&quot; id=&quot;server-method-override&quot;&gt;&lt;/a&gt;&lt;a href=&quot;#server-method-override&quot; aria-hidden=&quot;true&quot; class=&quot;hash-link&quot;&gt;&lt;svg class=&quot;hash-link-icon&quot; aria-hidden=&quot;true&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Server Method Override&lt;/h1&gt;
+"/><meta property="og:image" content="https://skazkajs.org/img/docusaurus.png"/><meta name="twitter:card" content="summary"/><meta name="twitter:image" content="https://skazkajs.org/img/docusaurus.png"/><link rel="shortcut icon" href="/img/favicon.png"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css"/><link rel="alternate" type="application/atom+xml" href="https://skazkajs.org/blog/atom.xml" title="Skazka Blog ATOM Feed"/><link rel="alternate" type="application/rss+xml" href="https://skazkajs.org/blog/feed.xml" title="Skazka Blog RSS Feed"/><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><link rel="stylesheet" href="/css/main.css"/></head><body class="sideNavVisible separateOnPageNav"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/"><img class="logo" src="/img/docusaurus.svg" alt="Skazka"/><h2 class="headerTitleWithLogo">Skazka</h2></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class=""><a href="/server" target="_self">API</a></li><li class=""><a href="https://www.github.com/skazkajs/skazka" target="_self">Github</a></li><li class=""><a href="/blog/" target="_self">Blog</a></li></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="container mainContainer"><div class="wrapper"><div class="post"><header class="postHeader"><h1 class="postHeaderTitle">server-method-override/README</h1></header><article><div><span><h1><a class="anchor" aria-hidden="true" id="server-method-override"></a><a href="#server-method-override" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Server Method Override</h1>
+<p>Lets you use HTTP verbs such as PUT or DELETE in places where the client doesn't support it.</p>
+<p><a href="https://npmjs.org/package/@skazka/server-method-override"><img src="https://nodei.co/npm/@skazka/server-method-override.png" alt="NPM"></a></p>
+<h2><a class="anchor" aria-hidden="true" id="how-to-install"></a><a href="#how-to-install" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>How to install</h2>
+<pre><code class="hljs">npm i @skazka/server @skazka/server-method-override
+</code></pre>
+<p>With yarn:</p>
+<pre><code class="hljs">yarn add @skazka/server @skazka/server-method-override
+</code></pre>
+<p>Optionally you can add http server, error handler, logger, router, request and response:</p>
+<pre><code class="hljs">npm i @skazka/server-http @skazka/server-router @skazka/server-error @skazka/server-logger @skazka/server-request @skazka/server-response
+</code></pre>
+<p>With yarn:</p>
+<pre><code class="hljs">yarn add @skazka/server-http @skazka/server-router @skazka/server-error @skazka/server-logger @skazka/server-request @skazka/server-response
+</code></pre>
+<h2><a class="anchor" aria-hidden="true" id="how-to-use"></a><a href="#how-to-use" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>How to use</h2>
+<pre><code class="hljs css language-javascript"><span class="hljs-keyword">const</span> App = <span class="hljs-built_in">require</span>(<span class="hljs-string">'@skazka/server'</span>);
+<span class="hljs-keyword">const</span> Router = <span class="hljs-built_in">require</span>(<span class="hljs-string">'@skazka/server-router'</span>);
+        
+<span class="hljs-keyword">const</span> methodOverride = <span class="hljs-built_in">require</span>(<span class="hljs-string">'@skazka/server-method-override'</span>);
+        
+<span class="hljs-keyword">const</span> error = <span class="hljs-built_in">require</span>(<span class="hljs-string">'@skazka/server-error'</span>);
+<span class="hljs-keyword">const</span> logger = <span class="hljs-built_in">require</span>(<span class="hljs-string">'@skazka/server-logger'</span>);
+
+<span class="hljs-keyword">const</span> request = <span class="hljs-built_in">require</span>(<span class="hljs-string">'@skazka/server-request'</span>);
+<span class="hljs-keyword">const</span> response = <span class="hljs-built_in">require</span>(<span class="hljs-string">'@skazka/server-response'</span>);
+        
+<span class="hljs-keyword">const</span> server = <span class="hljs-built_in">require</span>(<span class="hljs-string">'@skazka/server-http'</span>);
+        
+<span class="hljs-keyword">const</span> app = <span class="hljs-keyword">new</span> App();
+<span class="hljs-keyword">const</span> router = <span class="hljs-keyword">new</span> Router();
+        
+app.all([
+  error(),
+  logger(),
+  request(),
+  methodOverride(),
+  response(),
+]);
+    
+app.then(<span class="hljs-keyword">async</span> (ctx) =&gt; {
+  <span class="hljs-built_in">console</span>.log(ctx.get(<span class="hljs-string">'request'</span>).method);
+  <span class="hljs-comment">// it works for each request</span>
+});
+    
+router.get(<span class="hljs-string">'/data'</span>).then(<span class="hljs-keyword">async</span> (ctx) =&gt; {
+  <span class="hljs-keyword">return</span> ctx.response(ctx.get(<span class="hljs-string">'request'</span>).method); 
+});
+        
+app.then(router.resolve());
+        
+server.createHttpServer(app);
+</code></pre>
+<h2><a class="anchor" aria-hidden="true" id="api"></a><a href="#api" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>API</h2>
+<p><strong>NOTE</strong> It is very important that this module is used <strong>before</strong> any module that
+needs to know the method of the request.</p>
+<h3><a class="anchor" aria-hidden="true" id="methodoverridegetter-options"></a><a href="#methodoverridegetter-options" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>methodOverride(getter, options)</h3>
+<p>Create a new middleware function to override the <code>req.method</code> property with a new
+value. This value will be pulled from the provided <code>getter</code>.</p>
+<ul>
+<li><code>getter</code> - The getter to use to look up the overridden request method for the request. (default: <code>X-HTTP-Method-Override</code>)</li>
+<li><code>options.methods</code> - The allowed methods the original request must be in to check for a method override value. (default: <code>['POST']</code>)</li>
+</ul>
+<p>If the found method is supported by node.js core, then <code>req.method</code> will be set to
+this value, as if it has originally been that value. The previous <code>req.method</code>
+value will be stored in <code>req.originalMethod</code>.</p>
+<h4><a class="anchor" aria-hidden="true" id="getter"></a><a href="#getter" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>getter</h4>
+<p>This is the method of getting the override value from the request. If a function is provided,
+the <code>req</code> is passed as the first argument, the <code>res</code> as the second argument and the method is
+expected to be returned. If a string is provided, the string is used to look up the method
+with the following rules:</p>
+<ul>
+<li>If the string starts with <code>X-</code>, then it is treated as the name of a header and that header
+is used for the method override. If the request contains the same header multiple times, the
+first occurrence is used.</li>
+<li>All other strings are treated as a key in the URL query string.</li>
+</ul>
+<h4><a class="anchor" aria-hidden="true" id="optionsmethods"></a><a href="#optionsmethods" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>options.methods</h4>
+<p>This allows the specification of what methods(s) the request <em>MUST</em> be in in order to check for
+the method override value. This defaults to only <code>POST</code> methods, which is the only method the
+override should arrive in. More methods may be specified here, but it may introduce security
+issues and cause weird behavior when requests travel through caches. This value is an array
+of methods in upper-case. <code>null</code> can be specified to allow all methods.</p>
+<h2><a class="anchor" aria-hidden="true" id="examples"></a><a href="#examples" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Examples</h2>
+<h3><a class="anchor" aria-hidden="true" id="override-using-a-header"></a><a href="#override-using-a-header" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>override using a header</h3>
+<p>To use a header to override the method, specify the header name
+as a string argument to the <code>methodOverride</code> function. To then make
+the call, send  a <code>POST</code> request to a URL with the overridden method
+as the value of that header. This method of using a header would
+typically be used in conjunction with <code>XMLHttpRequest</code> on implementations
+that do not support the method you are trying to use.</p>
+<pre><code class="hljs css language-js"><span class="hljs-keyword">const</span> App = <span class="hljs-built_in">require</span>(<span class="hljs-string">'@skazka/server'</span>);
+<span class="hljs-keyword">const</span> methodOverride = <span class="hljs-built_in">require</span>(<span class="hljs-string">'@skazka/server-method-override'</span>);
+
+<span class="hljs-keyword">const</span> app = <span class="hljs-keyword">new</span> App();
+
+<span class="hljs-comment">// override with the X-HTTP-Method-Override header in the request</span>
+app.then(methodOverride(<span class="hljs-string">'X-HTTP-Method-Override'</span>));
+</code></pre>
+<p>Example call with header override using <code>XMLHttpRequest</code>:</p>
+<pre><code class="hljs css language-js"><span class="hljs-keyword">var</span> xhr = <span class="hljs-keyword">new</span> XMLHttpRequest()
+xhr.onload = onload
+xhr.open(<span class="hljs-string">'post'</span>, <span class="hljs-string">'/resource'</span>, <span class="hljs-literal">true</span>)
+xhr.setRequestHeader(<span class="hljs-string">'X-HTTP-Method-Override'</span>, <span class="hljs-string">'DELETE'</span>)
+xhr.send()
+
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">onload</span> (<span class="hljs-params"></span>) </span>{
+  alert(<span class="hljs-string">'got response: '</span> + <span class="hljs-keyword">this</span>.responseText)
+}
+</code></pre>
+<h3><a class="anchor" aria-hidden="true" id="override-using-a-query-value"></a><a href="#override-using-a-query-value" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>override using a query value</h3>
+<p>To use a query string value to override the method, specify the query
+string key as a string argument to the <code>methodOverride</code> function. To
+then make the call, send  a <code>POST</code> request to a URL with the overridden
+method as the value of that query string key. This method of using a
+query value would typically be used in conjunction with plain HTML
+<code>&lt;form&gt;</code> elements when trying to support legacy browsers but still use
+newer methods.</p>
+<pre><code class="hljs css language-js"><span class="hljs-keyword">const</span> App = <span class="hljs-built_in">require</span>(<span class="hljs-string">'@skazka/server'</span>);
+<span class="hljs-keyword">const</span> methodOverride = <span class="hljs-built_in">require</span>(<span class="hljs-string">'@skazka/server-method-override'</span>);
+
+<span class="hljs-keyword">const</span> app = <span class="hljs-keyword">new</span> App();
+
+<span class="hljs-comment">// override with POST having ?_method=DELETE</span>
+app.then(methodOverride(<span class="hljs-string">'_method'</span>))
+</code></pre>
+<p>Example call with query override using HTML <code>&lt;form&gt;</code>:</p>
+<pre><code class="hljs css language-html"><span class="hljs-tag">&lt;<span class="hljs-name">form</span> <span class="hljs-attr">method</span>=<span class="hljs-string">"POST"</span> <span class="hljs-attr">action</span>=<span class="hljs-string">"/resource?_method=DELETE"</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"submit"</span>&gt;</span>Delete resource<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">form</span>&gt;</span>
+</code></pre>
+<h3><a class="anchor" aria-hidden="true" id="multiple-format-support"></a><a href="#multiple-format-support" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>multiple format support</h3>
+<pre><code class="hljs css language-js"><span class="hljs-keyword">const</span> App = <span class="hljs-built_in">require</span>(<span class="hljs-string">'@skazka/server'</span>);
+<span class="hljs-keyword">const</span> methodOverride = <span class="hljs-built_in">require</span>(<span class="hljs-string">'@skazka/server-method-override'</span>);
+
+<span class="hljs-keyword">const</span> app = <span class="hljs-keyword">new</span> App();
+
+<span class="hljs-comment">// override with different headers; last one takes precedence</span>
+app.all([
+  methodOverride(<span class="hljs-string">'X-HTTP-Method'</span>), <span class="hljs-comment">//          Microsoft</span>
+  methodOverride(<span class="hljs-string">'X-HTTP-Method-Override'</span>), <span class="hljs-comment">// Google/GData</span>
+  methodOverride(<span class="hljs-string">'X-Method-Override'</span>), <span class="hljs-comment">//      IBM</span>
+]);
+</code></pre>
+<h3><a class="anchor" aria-hidden="true" id="custom-logic"></a><a href="#custom-logic" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>custom logic</h3>
+<p>You can implement any kind of custom logic with a function for the <code>getter</code>. The following
+implements the logic for looking in <code>req.body</code> that was in <code>method-override@1</code>:</p>
+<pre><code class="hljs css language-js"><span class="hljs-keyword">const</span> App = <span class="hljs-built_in">require</span>(<span class="hljs-string">'@skazka/server'</span>);
+<span class="hljs-keyword">const</span> methodOverride = <span class="hljs-built_in">require</span>(<span class="hljs-string">'@skazka/server-method-override'</span>);
+<span class="hljs-keyword">const</span> bodyParser = <span class="hljs-built_in">require</span>(<span class="hljs-string">'@skazka/server-body-parser'</span>);
+
+<span class="hljs-keyword">const</span> app = <span class="hljs-keyword">new</span> App();
+
+<span class="hljs-comment">// <span class="hljs-doctag">NOTE:</span> when using req.body, you must fully parse the request body</span>
+<span class="hljs-comment">//       before you call methodOverride() in your middleware stack,</span>
+<span class="hljs-comment">//       otherwise req.body will not be populated.</span>
+app.then(bodyParser.urlencoded())
+app.then(methodOverride(<span class="hljs-function">(<span class="hljs-params">req</span>) =&gt;</span> {
+  <span class="hljs-keyword">if</span> (req.body &amp;&amp; <span class="hljs-keyword">typeof</span> req.body === <span class="hljs-string">'object'</span> &amp;&amp; <span class="hljs-string">'_method'</span> <span class="hljs-keyword">in</span> req.body) {
+    <span class="hljs-comment">// look in urlencoded POST bodies and delete it</span>
+    <span class="hljs-keyword">const</span> method = req.body._method;
+    
+    <span class="hljs-keyword">delete</span> req.body._method;
+    
+    <span class="hljs-keyword">return</span> method;
+  }
+}))
+</code></pre>
+<p>Example call with query override using HTML <code>&lt;form&gt;</code>:</p>
+<pre><code class="hljs css language-html"><span class="hljs-comment">&lt;!-- enctype must be set to the type you will parse before methodOverride() --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">form</span> <span class="hljs-attr">method</span>=<span class="hljs-string">"POST"</span> <span class="hljs-attr">action</span>=<span class="hljs-string">"/resource"</span> <span class="hljs-attr">enctype</span>=<span class="hljs-string">"application/x-www-form-urlencoded"</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"hidden"</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"_method"</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"DELETE"</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"submit"</span>&gt;</span>Delete resource<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">form</span>&gt;</span>
+</code></pre>
+</span></div></article></div><div class="docs-prevnext"></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#how-to-install">How to install</a></li><li><a href="#how-to-use">How to use</a></li><li><a href="#api">API</a><ul class="toc-headings"><li><a href="#methodoverridegetter-options">methodOverride(getter, options)</a></li></ul></li><li><a href="#examples">Examples</a><ul class="toc-headings"><li><a href="#override-using-a-header">override using a header</a></li><li><a href="#override-using-a-query-value">override using a query value</a></li><li><a href="#multiple-format-support">multiple format support</a></li><li><a href="#custom-logic">custom logic</a></li></ul></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="copyright">Copyright © 2019 SkazkaJS</section></footer></div></body></html>

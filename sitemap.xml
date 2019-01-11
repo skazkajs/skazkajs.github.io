@@ -3,14 +3,30 @@
 <url> <loc>https://skazkajs.org/help</loc> <changefreq>weekly</changefreq> <priority>0.5</priority> <xhtml:link rel="alternate" hreflang="en" href="https://skazkajs.org/en/help" /> </url>
 <url> <loc>https://skazkajs.org/index</loc> <changefreq>weekly</changefreq> <priority>0.5</priority> <xhtml:link rel="alternate" hreflang="en" href="https://skazkajs.org/en/index" /> </url>
 <url> <loc>https://skazkajs.org/users</loc> <changefreq>weekly</changefreq> <priority>0.5</priority> <xhtml:link rel="alternate" hreflang="en" href="https://skazkajs.org/en/users" /> </url>
-<url> <loc>https://skazkajs.org/blog/2017/10/24/new-version-1.0.0</loc> <changefreq>weekly</changefreq> <priority>0.3</priority> </url>
-<url> <loc>https://skazkajs.org/blog/2017/09/26/adding-rss</loc> <changefreq>weekly</changefreq> <priority>0.3</priority> </url>
-<url> <loc>https://skazkajs.org/blog/2017/09/25/testing-rss</loc> <changefreq>weekly</changefreq> <priority>0.3</priority> </url>
-<url> <loc>https://skazkajs.org/blog/2017/04/10/blog-post-two</loc> <changefreq>weekly</changefreq> <priority>0.3</priority> </url>
-<url> <loc>https://skazkajs.org/blog/2016/03/11/blog-post</loc> <changefreq>weekly</changefreq> <priority>0.3</priority> </url>
-<url> <loc>https://skazkajs.org/doc1</loc> <changefreq>hourly</changefreq> <priority>1.0</priority> <xhtml:link rel="alternate" hreflang="en" href="https://skazkajs.org/doc1" /> </url>
-<url> <loc>https://skazkajs.org/doc2</loc> <changefreq>hourly</changefreq> <priority>1.0</priority> <xhtml:link rel="alternate" hreflang="en" href="https://skazkajs.org/doc2" /> </url>
-<url> <loc>https://skazkajs.org/doc3</loc> <changefreq>hourly</changefreq> <priority>1.0</priority> <xhtml:link rel="alternate" hreflang="en" href="https://skazkajs.org/doc3" /> </url>
-<url> <loc>https://skazkajs.org/doc4</loc> <changefreq>hourly</changefreq> <priority>1.0</priority> <xhtml:link rel="alternate" hreflang="en" href="https://skazkajs.org/doc4" /> </url>
-<url> <loc>https://skazkajs.org/doc5</loc> <changefreq>hourly</changefreq> <priority>1.0</priority> <xhtml:link rel="alternate" hreflang="en" href="https://skazkajs.org/doc5" /> </url>
+<url> <loc>https://skazkajs.org/blog/2019/01/11/sie-release</loc> <changefreq>weekly</changefreq> <priority>0.3</priority> </url>
+<url> <loc>https://skazkajs.org/server-body-parser</loc> <changefreq>hourly</changefreq> <priority>1.0</priority> <xhtml:link rel="alternate" hreflang="en" href="https://skazkajs.org/server-body-parser" /> </url>
+<url> <loc>https://skazkajs.org/server-chaos</loc> <changefreq>hourly</changefreq> <priority>1.0</priority> <xhtml:link rel="alternate" hreflang="en" href="https://skazkajs.org/server-chaos" /> </url>
+<url> <loc>https://skazkajs.org/server-cookies</loc> <changefreq>hourly</changefreq> <priority>1.0</priority> <xhtml:link rel="alternate" hreflang="en" href="https://skazkajs.org/server-cookies" /> </url>
+<url> <loc>https://skazkajs.org/server-cors</loc> <changefreq>hourly</changefreq> <priority>1.0</priority> <xhtml:link rel="alternate" hreflang="en" href="https://skazkajs.org/server-cors" /> </url>
+<url> <loc>https://skazkajs.org/server-error/README</loc> <changefreq>hourly</changefreq> <priority>1.0</priority> <xhtml:link rel="alternate" hreflang="en" href="https://skazkajs.org/server-error/README" /> </url>
+<url> <loc>https://skazkajs.org/server-express/README</loc> <changefreq>hourly</changefreq> <priority>1.0</priority> <xhtml:link rel="alternate" hreflang="en" href="https://skazkajs.org/server-express/README" /> </url>
+<url> <loc>https://skazkajs.org/server-graphql/README</loc> <changefreq>hourly</changefreq> <priority>1.0</priority> <xhtml:link rel="alternate" hreflang="en" href="https://skazkajs.org/server-graphql/README" /> </url>
+<url> <loc>https://skazkajs.org/server-helmet/README</loc> <changefreq>hourly</changefreq> <priority>1.0</priority> <xhtml:link rel="alternate" hreflang="en" href="https://skazkajs.org/server-helmet/README" /> </url>
+<url> <loc>https://skazkajs.org/server-http/README</loc> <changefreq>hourly</changefreq> <priority>1.0</priority> <xhtml:link rel="alternate" hreflang="en" href="https://skazkajs.org/server-http/README" /> </url>
+<url> <loc>https://skazkajs.org/server-index/README</loc> <changefreq>hourly</changefreq> <priority>1.0</priority> <xhtml:link rel="alternate" hreflang="en" href="https://skazkajs.org/server-index/README" /> </url>
+<url> <loc>https://skazkajs.org/server-init/README</loc> <changefreq>hourly</changefreq> <priority>1.0</priority> <xhtml:link rel="alternate" hreflang="en" href="https://skazkajs.org/server-init/README" /> </url>
+<url> <loc>https://skazkajs.org/server-logger/README</loc> <changefreq>hourly</changefreq> <priority>1.0</priority> <xhtml:link rel="alternate" hreflang="en" href="https://skazkajs.org/server-logger/README" /> </url>
+<url> <loc>https://skazkajs.org/server-method-override/README</loc> <changefreq>hourly</changefreq> <priority>1.0</priority> <xhtml:link rel="alternate" hreflang="en" href="https://skazkajs.org/server-method-override/README" /> </url>
+<url> <loc>https://skazkajs.org/server-module/README</loc> <changefreq>hourly</changefreq> <priority>1.0</priority> <xhtml:link rel="alternate" hreflang="en" href="https://skazkajs.org/server-module/README" /> </url>
+<url> <loc>https://skazkajs.org/server-mongoose/README</loc> <changefreq>hourly</changefreq> <priority>1.0</priority> <xhtml:link rel="alternate" hreflang="en" href="https://skazkajs.org/server-mongoose/README" /> </url>
+<url> <loc>https://skazkajs.org/server-mysql/README</loc> <changefreq>hourly</changefreq> <priority>1.0</priority> <xhtml:link rel="alternate" hreflang="en" href="https://skazkajs.org/server-mysql/README" /> </url>
+<url> <loc>https://skazkajs.org/server-pg/README</loc> <changefreq>hourly</changefreq> <priority>1.0</priority> <xhtml:link rel="alternate" hreflang="en" href="https://skazkajs.org/server-pg/README" /> </url>
+<url> <loc>https://skazkajs.org/server-redis/README</loc> <changefreq>hourly</changefreq> <priority>1.0</priority> <xhtml:link rel="alternate" hreflang="en" href="https://skazkajs.org/server-redis/README" /> </url>
+<url> <loc>https://skazkajs.org/server-request/README</loc> <changefreq>hourly</changefreq> <priority>1.0</priority> <xhtml:link rel="alternate" hreflang="en" href="https://skazkajs.org/server-request/README" /> </url>
+<url> <loc>https://skazkajs.org/server-response/README</loc> <changefreq>hourly</changefreq> <priority>1.0</priority> <xhtml:link rel="alternate" hreflang="en" href="https://skazkajs.org/server-response/README" /> </url>
+<url> <loc>https://skazkajs.org/server-router/README</loc> <changefreq>hourly</changefreq> <priority>1.0</priority> <xhtml:link rel="alternate" hreflang="en" href="https://skazkajs.org/server-router/README" /> </url>
+<url> <loc>https://skazkajs.org/server-spa/README</loc> <changefreq>hourly</changefreq> <priority>1.0</priority> <xhtml:link rel="alternate" hreflang="en" href="https://skazkajs.org/server-spa/README" /> </url>
+<url> <loc>https://skazkajs.org/server-static/README</loc> <changefreq>hourly</changefreq> <priority>1.0</priority> <xhtml:link rel="alternate" hreflang="en" href="https://skazkajs.org/server-static/README" /> </url>
+<url> <loc>https://skazkajs.org/server-virtual-host/README</loc> <changefreq>hourly</changefreq> <priority>1.0</priority> <xhtml:link rel="alternate" hreflang="en" href="https://skazkajs.org/server-virtual-host/README" /> </url>
+<url> <loc>https://skazkajs.org/server</loc> <changefreq>hourly</changefreq> <priority>1.0</priority> <xhtml:link rel="alternate" hreflang="en" href="https://skazkajs.org/server" /> </url>
 </urlset>
