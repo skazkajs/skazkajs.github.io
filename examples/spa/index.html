@@ -8,7 +8,7 @@
 
               ga('create', 'UA-42493460-2', 'auto');
               ga('send', 'pageview');
-            </script><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><link rel="stylesheet" href="/css/main.css"/></head><body class="sideNavVisible separateOnPageNav"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/"><img class="logo" src="/img/logo.png" alt="Skazka"/><h2 class="headerTitleWithLogo">Skazka</h2></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class=""><a href="/server/server" target="_self">Server</a></li><li class="siteNavGroupActive siteNavItemActive"><a href="/examples/spa" target="_self">Examples</a></li><li class=""><a href="https://www.github.com/skazkajs/skazka" target="_self">Github</a></li><li class=""><a href="/blog/" target="_self">Blog</a></li></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="container docsNavContainer" id="docsNav"><nav class="toc"><div class="toggleNav"><section class="navWrapper wrapper"><div class="navBreadcrumb wrapper"><div class="navToggle" id="navToggler"><i></i></div><h2><i>›</i><span>Server</span></h2><div class="tocToggler" id="tocToggler"><i class="icon-toc"></i></div></div><div class="navGroups"><div class="navGroup"><h3 class="navGroupCategoryTitle">Server</h3><ul><li class="navListItem navListItemActive"><a class="navItem" href="/examples/spa">SPA</a></li></ul></div></div></section></div><script>
+            </script><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><link rel="stylesheet" href="/css/main.css"/></head><body class="sideNavVisible separateOnPageNav"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/"><img class="logo" src="/img/logo.png" alt="Skazka"/><h2 class="headerTitleWithLogo">Skazka</h2></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class=""><a href="/server/server" target="_self">Server</a></li><li class="siteNavGroupActive"><a href="/examples/rest" target="_self">Examples</a></li><li class=""><a href="https://www.github.com/skazkajs/skazka" target="_self">Github</a></li><li class=""><a href="/blog/" target="_self">Blog</a></li></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="container docsNavContainer" id="docsNav"><nav class="toc"><div class="toggleNav"><section class="navWrapper wrapper"><div class="navBreadcrumb wrapper"><div class="navToggle" id="navToggler"><i></i></div><h2><i>›</i><span>Server</span></h2><div class="tocToggler" id="tocToggler"><i class="icon-toc"></i></div></div><div class="navGroups"><div class="navGroup"><h3 class="navGroupCategoryTitle">Server</h3><ul><li class="navListItem"><a class="navItem" href="/examples/rest">REST API</a></li><li class="navListItem navListItemActive"><a class="navItem" href="/examples/spa">SPA</a></li></ul></div></div></section></div><script>
             document.addEventListener('DOMContentLoaded', function() {
               createToggler('#navToggler', '#docsNav', 'docsSliderActive');
               createToggler('#tocToggler', 'body', 'tocActive');
@@ -157,15 +157,15 @@ describe(<span class="hljs-string">'SPA example test'</span>, <span class="hljs-
   <span class="hljs-attr">"author"</span>: <span class="hljs-string">"skazkajs"</span>,
   <span class="hljs-attr">"license"</span>: <span class="hljs-string">"MIT"</span>,
   <span class="hljs-attr">"dependencies"</span>: {
-    <span class="hljs-attr">"@skazka/server"</span>: <span class="hljs-string">"^0.0.0"</span>,
-    <span class="hljs-attr">"@skazka/server-http"</span>: <span class="hljs-string">"^0.0.0"</span>,
-    <span class="hljs-attr">"@skazka/server-index"</span>: <span class="hljs-string">"^0.0.0"</span>,
-    <span class="hljs-attr">"@skazka/server-init"</span>: <span class="hljs-string">"^0.0.0"</span>,
-    <span class="hljs-attr">"@skazka/server-spa"</span>: <span class="hljs-string">"^0.0.0"</span>,
-    <span class="hljs-attr">"@skazka/server-static"</span>: <span class="hljs-string">"^0.0.0"</span>,
-    <span class="hljs-attr">"axios"</span>: <span class="hljs-string">"^0.18.0"</span>,
-    <span class="hljs-attr">"debug"</span>: <span class="hljs-string">"^4.1.1"</span>,
-    <span class="hljs-attr">"jest"</span>: <span class="hljs-string">"^23.6.0"</span>
+    <span class="hljs-attr">"@skazka/server"</span>: <span class="hljs-string">"&gt;=0.0.0"</span>,
+    <span class="hljs-attr">"@skazka/server-http"</span>: <span class="hljs-string">"&gt;=0.0.0"</span>,
+    <span class="hljs-attr">"@skazka/server-index"</span>: <span class="hljs-string">"&gt;=0.0.0"</span>,
+    <span class="hljs-attr">"@skazka/server-init"</span>: <span class="hljs-string">"&gt;=0.0.0"</span>,
+    <span class="hljs-attr">"@skazka/server-spa"</span>: <span class="hljs-string">"&gt;=0.0.0"</span>,
+    <span class="hljs-attr">"@skazka/server-static"</span>: <span class="hljs-string">"&gt;=0.0.0"</span>,
+    <span class="hljs-attr">"axios"</span>: <span class="hljs-string">"&gt;=0.18.0"</span>,
+    <span class="hljs-attr">"debug"</span>: <span class="hljs-string">"&gt;=4.0.0"</span>,
+    <span class="hljs-attr">"jest"</span>: <span class="hljs-string">"&gt;=23.6.0"</span>
   }
 }
 </code></pre>
@@ -187,6 +187,7 @@ describe(<span class="hljs-string">'SPA example test'</span>, <span class="hljs-
 <h2><a class="anchor" aria-hidden="true" id="more-docs"></a><a href="#more-docs" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>More docs</h2>
 <ul>
 <li><a href="https://skazkajs.org/server">Server</a></li>
+<li><a href="https://skazkajs.org/server-init">Server init</a></li>
 <li><a href="https://skazkajs.org/server-index">Server Index</a></li>
 <li><a href="https://skazkajs.org/server-static">Server Static</a></li>
 <li><a href="https://skazkajs.org/server-spa">Server SPA</a></li>
@@ -195,7 +196,7 @@ describe(<span class="hljs-string">'SPA example test'</span>, <span class="hljs-
 <h2><a class="anchor" aria-hidden="true" id="copy-from-git"></a><a href="#copy-from-git" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Copy from git</h2>
 <p>Clone:</p>
 <pre><code class="hljs">git clone https://github.com/skazkajs/skazka.git
-cd skazka/examples/spaa
+cd skazka/examples/spa
 </code></pre>
 <p>Install:</p>
 <pre><code class="hljs">npm i
@@ -204,4 +205,4 @@ cd skazka/examples/spaa
 <pre><code class="hljs">yarn
 </code></pre>
 <p>And run <strong>start</strong> or <strong>test</strong> <a href="#commands">commands</a>.</p>
-</span></div></article></div><div class="docLastUpdate"><em>Last updated by Evheniy Bystrov</em></div><div class="docs-prevnext"></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#how-to-install">How to install</a></li><li><a href="#how-to-use">How to use</a><ul class="toc-headings"><li><a href="#indexjs">index.js</a></li><li><a href="#bin-www">bin/www</a></li><li><a href="#indextestjs">index.test.js</a></li><li><a href="#packagejson">package.json</a></li><li><a href="#dist-directory">dist directory</a></li></ul></li><li><a href="#commands">Commands</a><ul class="toc-headings"><li><a href="#run-app">Run app</a></li><li><a href="#test-app">Test app</a></li></ul></li><li><a href="#more-docs">More docs</a></li><li><a href="#copy-from-git">Copy from git</a></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="copyright">Copyright © 2019 SkazkaJS</section></footer></div></body></html>
+</span></div></article></div><div class="docLastUpdate"><em>Last updated by Evheniy Bystrov</em></div><div class="docs-prevnext"><a class="docs-prev button" href="/examples/rest"><span class="arrow-prev">← </span><span>REST API</span></a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#how-to-install">How to install</a></li><li><a href="#how-to-use">How to use</a><ul class="toc-headings"><li><a href="#indexjs">index.js</a></li><li><a href="#bin-www">bin/www</a></li><li><a href="#indextestjs">index.test.js</a></li><li><a href="#packagejson">package.json</a></li><li><a href="#dist-directory">dist directory</a></li></ul></li><li><a href="#commands">Commands</a><ul class="toc-headings"><li><a href="#run-app">Run app</a></li><li><a href="#test-app">Test app</a></li></ul></li><li><a href="#more-docs">More docs</a></li><li><a href="#copy-from-git">Copy from git</a></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="copyright">Copyright © 2019 SkazkaJS</section></footer></div></body></html>
