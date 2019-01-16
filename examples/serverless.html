@@ -1,0 +1,483 @@
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>Server Serverless · Skazka</title><meta name="viewport" content="width=device-width"/><meta name="generator" content="Docusaurus"/><meta name="description" content="&lt;p&gt;This example shows how to create GraphQL and REST APIs using Serverless.&lt;/p&gt;
+"/><meta name="docsearch:language" content="en"/><meta property="og:title" content="Server Serverless · Skazka"/><meta property="og:type" content="website"/><meta property="og:url" content="https://skazkajs.org/index.html"/><meta property="og:description" content="&lt;p&gt;This example shows how to create GraphQL and REST APIs using Serverless.&lt;/p&gt;
+"/><meta property="og:image" content="https://skazkajs.org/img/docusaurus.png"/><meta name="twitter:card" content="summary"/><meta name="twitter:image" content="https://skazkajs.org/img/docusaurus.png"/><link rel="shortcut icon" href="/img/favicon.ico"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css"/><link rel="alternate" type="application/atom+xml" href="https://skazkajs.org/blog/atom.xml" title="Skazka Blog ATOM Feed"/><link rel="alternate" type="application/rss+xml" href="https://skazkajs.org/blog/feed.xml" title="Skazka Blog RSS Feed"/><script>
+              (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+              (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+              m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+              })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+              ga('create', 'UA-42493460-2', 'auto');
+              ga('send', 'pageview');
+            </script><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><link rel="stylesheet" href="/css/main.css"/></head><body class="sideNavVisible separateOnPageNav"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/"><img class="logo" src="/img/logo.png" alt="Skazka"/><h2 class="headerTitleWithLogo">Skazka</h2></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class=""><a href="/server/server" target="_self">Server</a></li><li class="siteNavGroupActive"><a href="/examples/rest" target="_self">Examples</a></li><li class=""><a href="https://www.github.com/skazkajs/skazka" target="_self">Github</a></li><li class=""><a href="/blog/" target="_self">Blog</a></li></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="container docsNavContainer" id="docsNav"><nav class="toc"><div class="toggleNav"><section class="navWrapper wrapper"><div class="navBreadcrumb wrapper"><div class="navToggle" id="navToggler"><i></i></div><h2><i>›</i><span>Server</span></h2><div class="tocToggler" id="tocToggler"><i class="icon-toc"></i></div></div><div class="navGroups"><div class="navGroup"><h3 class="navGroupCategoryTitle">Server</h3><ul><li class="navListItem"><a class="navItem" href="/examples/rest">REST API</a></li><li class="navListItem"><a class="navItem" href="/examples/graphql">GraphQL</a></li><li class="navListItem navListItemActive"><a class="navItem" href="/examples/serverless">Serverless</a></li><li class="navListItem"><a class="navItem" href="/examples/spa">SPA</a></li></ul></div></div></section></div><script>
+            document.addEventListener('DOMContentLoaded', function() {
+              createToggler('#navToggler', '#docsNav', 'docsSliderActive');
+              createToggler('#tocToggler', 'body', 'tocActive');
+
+              const headings = document.querySelector('.toc-headings');
+              headings && headings.addEventListener('click', function(event) {
+                if (event.target.tagName === 'A') {
+                  document.body.classList.remove('tocActive');
+                }
+              }, false);
+
+              function createToggler(togglerSelector, targetSelector, className) {
+                var toggler = document.querySelector(togglerSelector);
+                var target = document.querySelector(targetSelector);
+
+                if (!toggler) {
+                  return;
+                }
+
+                toggler.onclick = function(event) {
+                  event.preventDefault();
+
+                  target.classList.toggle(className);
+                };
+              }
+            });
+        </script></nav></div><div class="container mainContainer"><div class="wrapper"><div class="post"><header class="postHeader"><h1 class="postHeaderTitle">Server Serverless</h1></header><article><div><span><p>This example shows how to create GraphQL and REST APIs using Serverless.</p>
+<h2><a class="anchor" aria-hidden="true" id="how-to-install"></a><a href="#how-to-install" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>How to install</h2>
+<pre><code class="hljs">npm i @skazka/server @skazka/server-body-parser @skazka/server-cors @skazka/server-graphql @skazka/server-http @skazka/server-init @skazka/server-router aws-serverless-express serverless serverless-offline debug graphql axios jest
+</code></pre>
+<p>With yarn:</p>
+<pre><code class="hljs">yarn add @skazka/server @skazka/server-body-parser @skazka/server-cors @skazka/server-graphql @skazka/server-http @skazka/server-init @skazka/server-router aws-serverless-express serverless serverless-offline debug graphql axios jest
+</code></pre>
+<h2><a class="anchor" aria-hidden="true" id="how-to-use"></a><a href="#how-to-use" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>How to use</h2>
+<h3><a class="anchor" aria-hidden="true" id="db-indexjs"></a><a href="#db-indexjs" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>db/index.js</h3>
+<p>It's emulation of any database.</p>
+<pre><code class="hljs css language-javascript"><span class="hljs-keyword">const</span> users = [];
+
+<span class="hljs-built_in">module</span>.exports = users;
+</code></pre>
+<h3><a class="anchor" aria-hidden="true" id="graphql-indexjs"></a><a href="#graphql-indexjs" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>graphql/index.js</h3>
+<pre><code class="hljs css language-javascript"><span class="hljs-keyword">const</span> {
+  GraphQLSchema,
+  GraphQLObjectType,
+  GraphQLString,
+  GraphQLList,
+} = <span class="hljs-built_in">require</span>(<span class="hljs-string">'graphql'</span>);
+
+<span class="hljs-keyword">const</span> users = <span class="hljs-built_in">require</span>(<span class="hljs-string">'../db'</span>);
+
+<span class="hljs-keyword">const</span> UserType = <span class="hljs-keyword">new</span> GraphQLObjectType({
+  <span class="hljs-attr">name</span>: <span class="hljs-string">'UserType'</span>,
+  <span class="hljs-attr">description</span>: <span class="hljs-string">'User type'</span>,
+  <span class="hljs-attr">fields</span>: {
+    <span class="hljs-attr">name</span>: {
+      <span class="hljs-attr">type</span>: GraphQLString,
+    },
+  },
+});
+
+<span class="hljs-keyword">const</span> schema = <span class="hljs-keyword">new</span> GraphQLSchema({
+  <span class="hljs-attr">query</span>: <span class="hljs-keyword">new</span> GraphQLObjectType({
+    <span class="hljs-attr">name</span>: <span class="hljs-string">'QueryType'</span>,
+    <span class="hljs-attr">fields</span>: {
+      <span class="hljs-attr">users</span>: {
+        <span class="hljs-attr">type</span>: <span class="hljs-keyword">new</span> GraphQLList(UserType),
+        resolve() {
+          <span class="hljs-keyword">return</span> users;
+        },
+      },
+    },
+  }),
+  <span class="hljs-attr">mutation</span>: <span class="hljs-keyword">new</span> GraphQLObjectType({
+    <span class="hljs-attr">name</span>: <span class="hljs-string">'MutationType'</span>,
+    <span class="hljs-attr">fields</span>: {
+      <span class="hljs-attr">users</span>: {
+        <span class="hljs-attr">type</span>: <span class="hljs-keyword">new</span> GraphQLList(UserType),
+        <span class="hljs-attr">args</span>: {
+          <span class="hljs-attr">name</span>: {
+            <span class="hljs-attr">type</span>: GraphQLString,
+          },
+        },
+        resolve(parent, { name }) {
+          users.push({ name });
+
+          <span class="hljs-keyword">return</span> users;
+        },
+      },
+    },
+  }),
+});
+
+<span class="hljs-keyword">const</span> graphiql = <span class="hljs-literal">true</span>;
+
+<span class="hljs-built_in">module</span>.exports = { schema, graphiql };
+</code></pre>
+<h3><a class="anchor" aria-hidden="true" id="router-indexjs"></a><a href="#router-indexjs" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>router/index.js</h3>
+<pre><code class="hljs css language-javascript"><span class="hljs-keyword">const</span> Router = <span class="hljs-built_in">require</span>(<span class="hljs-string">'@skazka/server-router'</span>);
+
+<span class="hljs-keyword">const</span> graphql = <span class="hljs-built_in">require</span>(<span class="hljs-string">'@skazka/server-graphql'</span>);
+<span class="hljs-keyword">const</span> bodyParser = <span class="hljs-built_in">require</span>(<span class="hljs-string">'@skazka/server-body-parser'</span>);
+
+<span class="hljs-keyword">const</span> { schema, graphiql } = <span class="hljs-built_in">require</span>(<span class="hljs-string">'../graphql'</span>);
+<span class="hljs-keyword">const</span> users = <span class="hljs-built_in">require</span>(<span class="hljs-string">'../db'</span>);
+
+<span class="hljs-keyword">const</span> router = <span class="hljs-keyword">new</span> Router();
+
+router.all(<span class="hljs-string">'/'</span>).then(graphql({ schema, graphiql }));
+
+router.get(<span class="hljs-string">'/users'</span>).then(<span class="hljs-function"><span class="hljs-params">ctx</span> =&gt;</span> ctx.response(users));
+
+router.post(<span class="hljs-string">'/users'</span>).then(<span class="hljs-keyword">async</span> (ctx) =&gt; {
+  <span class="hljs-keyword">await</span> bodyParser.json(ctx);
+
+  users.push(ctx.request.body);
+
+  <span class="hljs-keyword">return</span> ctx.response({ <span class="hljs-attr">message</span>: <span class="hljs-string">'User saved'</span> });
+});
+
+<span class="hljs-built_in">module</span>.exports = router;
+</code></pre>
+<h3><a class="anchor" aria-hidden="true" id="app-indexjs"></a><a href="#app-indexjs" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>app/index.js</h3>
+<pre><code class="hljs css language-javascript"><span class="hljs-keyword">const</span> Server = <span class="hljs-built_in">require</span>(<span class="hljs-string">'@skazka/server'</span>);
+
+<span class="hljs-keyword">const</span> init = <span class="hljs-built_in">require</span>(<span class="hljs-string">'@skazka/server-init'</span>);
+<span class="hljs-keyword">const</span> cors = <span class="hljs-built_in">require</span>(<span class="hljs-string">'@skazka/server-cors'</span>);
+
+<span class="hljs-keyword">const</span> router = <span class="hljs-built_in">require</span>(<span class="hljs-string">'../router'</span>);
+
+<span class="hljs-keyword">const</span> server = <span class="hljs-keyword">new</span> Server();
+
+server
+  .then(init({ <span class="hljs-attr">error</span>: { <span class="hljs-attr">isJSON</span>: <span class="hljs-literal">true</span> } }))
+  .then(cors())
+  .then(router.resolve());
+
+<span class="hljs-built_in">module</span>.exports = server;
+</code></pre>
+<h3><a class="anchor" aria-hidden="true" id="indextestjs"></a><a href="#indextestjs" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>index.test.js</h3>
+<pre><code class="hljs css language-javascript"><span class="hljs-keyword">const</span> srv = <span class="hljs-built_in">require</span>(<span class="hljs-string">'@skazka/server-http'</span>);
+<span class="hljs-keyword">const</span> axios = <span class="hljs-built_in">require</span>(<span class="hljs-string">'axios'</span>);
+<span class="hljs-keyword">const</span> httpAdapter = <span class="hljs-built_in">require</span>(<span class="hljs-string">'axios/lib/adapters/http'</span>);
+
+<span class="hljs-keyword">const</span> app = <span class="hljs-built_in">require</span>(<span class="hljs-string">'./app'</span>);
+
+<span class="hljs-keyword">const</span> host = <span class="hljs-string">`http://localhost:<span class="hljs-subst">${process.env.PORT || <span class="hljs-string">'3000'</span>}</span>`</span>;
+
+axios.defaults.host = host;
+axios.defaults.adapter = httpAdapter;
+
+describe(<span class="hljs-string">'GraphQL example test'</span>, <span class="hljs-keyword">async</span> () =&gt; {
+  <span class="hljs-keyword">let</span> server;
+
+  beforeEach(<span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> {
+    server = srv.createHttpServer(app);
+  });
+
+  afterEach(<span class="hljs-function">(<span class="hljs-params">done</span>) =&gt;</span> {
+    server.close(done);
+  });
+
+  test(<span class="hljs-string">'It should test GET graphql request'</span>, <span class="hljs-keyword">async</span> () =&gt; {
+    <span class="hljs-keyword">await</span> axios.get(<span class="hljs-string">`<span class="hljs-subst">${host}</span>/?query={ users { name } }`</span>).then(<span class="hljs-function">(<span class="hljs-params">response</span>) =&gt;</span> {
+      expect(response.status).toEqual(<span class="hljs-number">200</span>);
+      expect(response.statusText).toEqual(<span class="hljs-string">'OK'</span>);
+      expect(response.data.data.users).toEqual([]);
+      <span class="hljs-comment">// helmet headers</span>
+      expect(response.headers[<span class="hljs-string">'x-dns-prefetch-control'</span>]).toEqual(<span class="hljs-string">'off'</span>);
+      expect(response.headers[<span class="hljs-string">'x-frame-options'</span>]).toEqual(<span class="hljs-string">'SAMEORIGIN'</span>);
+      expect(response.headers[<span class="hljs-string">'strict-transport-security'</span>]).toEqual(<span class="hljs-string">'max-age=15552000; includeSubDomains'</span>);
+      expect(response.headers[<span class="hljs-string">'x-download-options'</span>]).toEqual(<span class="hljs-string">'noopen'</span>);
+      expect(response.headers[<span class="hljs-string">'x-content-type-options'</span>]).toEqual(<span class="hljs-string">'nosniff'</span>);
+      expect(response.headers[<span class="hljs-string">'x-xss-protection'</span>]).toEqual(<span class="hljs-string">'1; mode=block'</span>);
+      <span class="hljs-comment">// cors header</span>
+      expect(response.headers[<span class="hljs-string">'access-control-allow-origin'</span>]).toEqual(<span class="hljs-string">'*'</span>);
+      <span class="hljs-comment">// init({ error: { isJSON: true } }) it sets json header</span>
+      expect(response.headers[<span class="hljs-string">'content-type'</span>]).toEqual(<span class="hljs-string">'application/json; charset=utf-8'</span>);
+    });
+  });
+
+  test(<span class="hljs-string">'It should test POST graphql request'</span>, <span class="hljs-keyword">async</span> () =&gt; {
+    <span class="hljs-keyword">await</span> axios.post(<span class="hljs-string">`<span class="hljs-subst">${host}</span>/`</span>, { <span class="hljs-attr">query</span>: <span class="hljs-string">'{ users { name } }'</span> }).then(<span class="hljs-function">(<span class="hljs-params">response</span>) =&gt;</span> {
+      expect(response.status).toEqual(<span class="hljs-number">200</span>);
+      expect(response.statusText).toEqual(<span class="hljs-string">'OK'</span>);
+      expect(response.data.data.users).toEqual([]);
+      <span class="hljs-comment">// helmet headers</span>
+      expect(response.headers[<span class="hljs-string">'x-dns-prefetch-control'</span>]).toEqual(<span class="hljs-string">'off'</span>);
+      expect(response.headers[<span class="hljs-string">'x-frame-options'</span>]).toEqual(<span class="hljs-string">'SAMEORIGIN'</span>);
+      expect(response.headers[<span class="hljs-string">'strict-transport-security'</span>]).toEqual(<span class="hljs-string">'max-age=15552000; includeSubDomains'</span>);
+      expect(response.headers[<span class="hljs-string">'x-download-options'</span>]).toEqual(<span class="hljs-string">'noopen'</span>);
+      expect(response.headers[<span class="hljs-string">'x-content-type-options'</span>]).toEqual(<span class="hljs-string">'nosniff'</span>);
+      expect(response.headers[<span class="hljs-string">'x-xss-protection'</span>]).toEqual(<span class="hljs-string">'1; mode=block'</span>);
+      <span class="hljs-comment">// cors header</span>
+      expect(response.headers[<span class="hljs-string">'access-control-allow-origin'</span>]).toEqual(<span class="hljs-string">'*'</span>);
+      <span class="hljs-comment">// init({ error: { isJSON: true } }) it sets json header</span>
+      expect(response.headers[<span class="hljs-string">'content-type'</span>]).toEqual(<span class="hljs-string">'application/json; charset=utf-8'</span>);
+    });
+  });
+
+  test(<span class="hljs-string">'It should test GET /users'</span>, <span class="hljs-keyword">async</span> () =&gt; {
+    <span class="hljs-keyword">await</span> axios.get(<span class="hljs-string">`<span class="hljs-subst">${host}</span>/users`</span>).then(<span class="hljs-function">(<span class="hljs-params">response</span>) =&gt;</span> {
+      expect(response.status).toEqual(<span class="hljs-number">200</span>);
+      expect(response.statusText).toEqual(<span class="hljs-string">'OK'</span>);
+      expect(response.data).toEqual([]);
+      <span class="hljs-comment">// helmet headers</span>
+      expect(response.headers[<span class="hljs-string">'x-dns-prefetch-control'</span>]).toEqual(<span class="hljs-string">'off'</span>);
+      expect(response.headers[<span class="hljs-string">'x-frame-options'</span>]).toEqual(<span class="hljs-string">'SAMEORIGIN'</span>);
+      expect(response.headers[<span class="hljs-string">'strict-transport-security'</span>]).toEqual(<span class="hljs-string">'max-age=15552000; includeSubDomains'</span>);
+      expect(response.headers[<span class="hljs-string">'x-download-options'</span>]).toEqual(<span class="hljs-string">'noopen'</span>);
+      expect(response.headers[<span class="hljs-string">'x-content-type-options'</span>]).toEqual(<span class="hljs-string">'nosniff'</span>);
+      expect(response.headers[<span class="hljs-string">'x-xss-protection'</span>]).toEqual(<span class="hljs-string">'1; mode=block'</span>);
+      <span class="hljs-comment">// cors header</span>
+      expect(response.headers[<span class="hljs-string">'access-control-allow-origin'</span>]).toEqual(<span class="hljs-string">'*'</span>);
+      <span class="hljs-comment">// init({ error: { isJSON: true } }) it sets json header</span>
+      expect(response.headers[<span class="hljs-string">'content-type'</span>]).toEqual(<span class="hljs-string">'application/json'</span>);
+    });
+  });
+
+  test(<span class="hljs-string">'It should test POST /users'</span>, <span class="hljs-keyword">async</span> () =&gt; {
+    <span class="hljs-keyword">await</span> axios.post(<span class="hljs-string">`<span class="hljs-subst">${host}</span>/users`</span>, { <span class="hljs-attr">name</span>: <span class="hljs-string">'test'</span> }).then(<span class="hljs-function">(<span class="hljs-params">response</span>) =&gt;</span> {
+      expect(response.status).toEqual(<span class="hljs-number">200</span>);
+      expect(response.statusText).toEqual(<span class="hljs-string">'OK'</span>);
+      expect(response.data.message).toEqual(<span class="hljs-string">'User saved'</span>);
+      <span class="hljs-comment">// helmet headers</span>
+      expect(response.headers[<span class="hljs-string">'x-dns-prefetch-control'</span>]).toEqual(<span class="hljs-string">'off'</span>);
+      expect(response.headers[<span class="hljs-string">'x-frame-options'</span>]).toEqual(<span class="hljs-string">'SAMEORIGIN'</span>);
+      expect(response.headers[<span class="hljs-string">'strict-transport-security'</span>]).toEqual(<span class="hljs-string">'max-age=15552000; includeSubDomains'</span>);
+      expect(response.headers[<span class="hljs-string">'x-download-options'</span>]).toEqual(<span class="hljs-string">'noopen'</span>);
+      expect(response.headers[<span class="hljs-string">'x-content-type-options'</span>]).toEqual(<span class="hljs-string">'nosniff'</span>);
+      expect(response.headers[<span class="hljs-string">'x-xss-protection'</span>]).toEqual(<span class="hljs-string">'1; mode=block'</span>);
+      <span class="hljs-comment">// cors header</span>
+      expect(response.headers[<span class="hljs-string">'access-control-allow-origin'</span>]).toEqual(<span class="hljs-string">'*'</span>);
+      <span class="hljs-comment">// init({ error: { isJSON: true } }) it sets json header</span>
+      expect(response.headers[<span class="hljs-string">'content-type'</span>]).toEqual(<span class="hljs-string">'application/json'</span>);
+    });
+
+    <span class="hljs-keyword">await</span> axios.get(<span class="hljs-string">`<span class="hljs-subst">${host}</span>/users`</span>).then(<span class="hljs-function">(<span class="hljs-params">response</span>) =&gt;</span> {
+      expect(response.status).toEqual(<span class="hljs-number">200</span>);
+      expect(response.statusText).toEqual(<span class="hljs-string">'OK'</span>);
+      expect(response.data[<span class="hljs-number">0</span>].name).toEqual(<span class="hljs-string">'test'</span>);
+      <span class="hljs-comment">// helmet headers</span>
+      expect(response.headers[<span class="hljs-string">'x-dns-prefetch-control'</span>]).toEqual(<span class="hljs-string">'off'</span>);
+      expect(response.headers[<span class="hljs-string">'x-frame-options'</span>]).toEqual(<span class="hljs-string">'SAMEORIGIN'</span>);
+      expect(response.headers[<span class="hljs-string">'strict-transport-security'</span>]).toEqual(<span class="hljs-string">'max-age=15552000; includeSubDomains'</span>);
+      expect(response.headers[<span class="hljs-string">'x-download-options'</span>]).toEqual(<span class="hljs-string">'noopen'</span>);
+      expect(response.headers[<span class="hljs-string">'x-content-type-options'</span>]).toEqual(<span class="hljs-string">'nosniff'</span>);
+      expect(response.headers[<span class="hljs-string">'x-xss-protection'</span>]).toEqual(<span class="hljs-string">'1; mode=block'</span>);
+      <span class="hljs-comment">// cors header</span>
+      expect(response.headers[<span class="hljs-string">'access-control-allow-origin'</span>]).toEqual(<span class="hljs-string">'*'</span>);
+      <span class="hljs-comment">// init({ error: { isJSON: true } }) it sets json header</span>
+      expect(response.headers[<span class="hljs-string">'content-type'</span>]).toEqual(<span class="hljs-string">'application/json'</span>);
+    });
+
+    <span class="hljs-keyword">await</span> axios.post(<span class="hljs-string">`<span class="hljs-subst">${host}</span>/`</span>, { <span class="hljs-attr">query</span>: <span class="hljs-string">'{ users { name } }'</span> }).then(<span class="hljs-function">(<span class="hljs-params">response</span>) =&gt;</span> {
+      expect(response.status).toEqual(<span class="hljs-number">200</span>);
+      expect(response.statusText).toEqual(<span class="hljs-string">'OK'</span>);
+      expect(response.data.data.users[<span class="hljs-number">0</span>].name).toEqual(<span class="hljs-string">'test'</span>);
+      <span class="hljs-comment">// helmet headers</span>
+      expect(response.headers[<span class="hljs-string">'x-dns-prefetch-control'</span>]).toEqual(<span class="hljs-string">'off'</span>);
+      expect(response.headers[<span class="hljs-string">'x-frame-options'</span>]).toEqual(<span class="hljs-string">'SAMEORIGIN'</span>);
+      expect(response.headers[<span class="hljs-string">'strict-transport-security'</span>]).toEqual(<span class="hljs-string">'max-age=15552000; includeSubDomains'</span>);
+      expect(response.headers[<span class="hljs-string">'x-download-options'</span>]).toEqual(<span class="hljs-string">'noopen'</span>);
+      expect(response.headers[<span class="hljs-string">'x-content-type-options'</span>]).toEqual(<span class="hljs-string">'nosniff'</span>);
+      expect(response.headers[<span class="hljs-string">'x-xss-protection'</span>]).toEqual(<span class="hljs-string">'1; mode=block'</span>);
+      <span class="hljs-comment">// cors header</span>
+      expect(response.headers[<span class="hljs-string">'access-control-allow-origin'</span>]).toEqual(<span class="hljs-string">'*'</span>);
+      <span class="hljs-comment">// init({ error: { isJSON: true } }) it sets json header</span>
+      expect(response.headers[<span class="hljs-string">'content-type'</span>]).toEqual(<span class="hljs-string">'application/json; charset=utf-8'</span>);
+    });
+  });
+
+  test(<span class="hljs-string">'It should test POST graphql request to add data'</span>, <span class="hljs-keyword">async</span> () =&gt; {
+    <span class="hljs-keyword">await</span> axios.post(<span class="hljs-string">`<span class="hljs-subst">${host}</span>/`</span>, {
+      <span class="hljs-attr">query</span>: <span class="hljs-string">`
+      mutation getUsers {
+        users(name: "test") {
+          name
+        }
+       }
+       `</span>,
+    }).then(<span class="hljs-function">(<span class="hljs-params">response</span>) =&gt;</span> {
+      expect(response.status).toEqual(<span class="hljs-number">200</span>);
+      expect(response.statusText).toEqual(<span class="hljs-string">'OK'</span>);
+      expect(response.data.data.users[<span class="hljs-number">0</span>].name).toEqual(<span class="hljs-string">'test'</span>);
+      <span class="hljs-comment">// helmet headers</span>
+      expect(response.headers[<span class="hljs-string">'x-dns-prefetch-control'</span>]).toEqual(<span class="hljs-string">'off'</span>);
+      expect(response.headers[<span class="hljs-string">'x-frame-options'</span>]).toEqual(<span class="hljs-string">'SAMEORIGIN'</span>);
+      expect(response.headers[<span class="hljs-string">'strict-transport-security'</span>]).toEqual(<span class="hljs-string">'max-age=15552000; includeSubDomains'</span>);
+      expect(response.headers[<span class="hljs-string">'x-download-options'</span>]).toEqual(<span class="hljs-string">'noopen'</span>);
+      expect(response.headers[<span class="hljs-string">'x-content-type-options'</span>]).toEqual(<span class="hljs-string">'nosniff'</span>);
+      expect(response.headers[<span class="hljs-string">'x-xss-protection'</span>]).toEqual(<span class="hljs-string">'1; mode=block'</span>);
+      <span class="hljs-comment">// cors header</span>
+      expect(response.headers[<span class="hljs-string">'access-control-allow-origin'</span>]).toEqual(<span class="hljs-string">'*'</span>);
+      <span class="hljs-comment">// init({ error: { isJSON: true } }) it sets json header</span>
+      expect(response.headers[<span class="hljs-string">'content-type'</span>]).toEqual(<span class="hljs-string">'application/json; charset=utf-8'</span>);
+    });
+
+    <span class="hljs-keyword">await</span> axios.post(<span class="hljs-string">`<span class="hljs-subst">${host}</span>/`</span>, { <span class="hljs-attr">query</span>: <span class="hljs-string">'{ users { name } }'</span> }).then(<span class="hljs-function">(<span class="hljs-params">response</span>) =&gt;</span> {
+      expect(response.status).toEqual(<span class="hljs-number">200</span>);
+      expect(response.statusText).toEqual(<span class="hljs-string">'OK'</span>);
+      expect(response.data.data.users[<span class="hljs-number">0</span>].name).toEqual(<span class="hljs-string">'test'</span>);
+      <span class="hljs-comment">// helmet headers</span>
+      expect(response.headers[<span class="hljs-string">'x-dns-prefetch-control'</span>]).toEqual(<span class="hljs-string">'off'</span>);
+      expect(response.headers[<span class="hljs-string">'x-frame-options'</span>]).toEqual(<span class="hljs-string">'SAMEORIGIN'</span>);
+      expect(response.headers[<span class="hljs-string">'strict-transport-security'</span>]).toEqual(<span class="hljs-string">'max-age=15552000; includeSubDomains'</span>);
+      expect(response.headers[<span class="hljs-string">'x-download-options'</span>]).toEqual(<span class="hljs-string">'noopen'</span>);
+      expect(response.headers[<span class="hljs-string">'x-content-type-options'</span>]).toEqual(<span class="hljs-string">'nosniff'</span>);
+      expect(response.headers[<span class="hljs-string">'x-xss-protection'</span>]).toEqual(<span class="hljs-string">'1; mode=block'</span>);
+      <span class="hljs-comment">// cors header</span>
+      expect(response.headers[<span class="hljs-string">'access-control-allow-origin'</span>]).toEqual(<span class="hljs-string">'*'</span>);
+      <span class="hljs-comment">// init({ error: { isJSON: true } }) it sets json header</span>
+      expect(response.headers[<span class="hljs-string">'content-type'</span>]).toEqual(<span class="hljs-string">'application/json; charset=utf-8'</span>);
+    });
+
+    <span class="hljs-keyword">await</span> axios.get(<span class="hljs-string">`<span class="hljs-subst">${host}</span>/users`</span>).then(<span class="hljs-function">(<span class="hljs-params">response</span>) =&gt;</span> {
+      expect(response.status).toEqual(<span class="hljs-number">200</span>);
+      expect(response.statusText).toEqual(<span class="hljs-string">'OK'</span>);
+      expect(response.data[<span class="hljs-number">0</span>].name).toEqual(<span class="hljs-string">'test'</span>);
+      <span class="hljs-comment">// helmet headers</span>
+      expect(response.headers[<span class="hljs-string">'x-dns-prefetch-control'</span>]).toEqual(<span class="hljs-string">'off'</span>);
+      expect(response.headers[<span class="hljs-string">'x-frame-options'</span>]).toEqual(<span class="hljs-string">'SAMEORIGIN'</span>);
+      expect(response.headers[<span class="hljs-string">'strict-transport-security'</span>]).toEqual(<span class="hljs-string">'max-age=15552000; includeSubDomains'</span>);
+      expect(response.headers[<span class="hljs-string">'x-download-options'</span>]).toEqual(<span class="hljs-string">'noopen'</span>);
+      expect(response.headers[<span class="hljs-string">'x-content-type-options'</span>]).toEqual(<span class="hljs-string">'nosniff'</span>);
+      expect(response.headers[<span class="hljs-string">'x-xss-protection'</span>]).toEqual(<span class="hljs-string">'1; mode=block'</span>);
+      <span class="hljs-comment">// cors header</span>
+      expect(response.headers[<span class="hljs-string">'access-control-allow-origin'</span>]).toEqual(<span class="hljs-string">'*'</span>);
+      <span class="hljs-comment">// init({ error: { isJSON: true } }) it sets json header</span>
+      expect(response.headers[<span class="hljs-string">'content-type'</span>]).toEqual(<span class="hljs-string">'application/json'</span>);
+    });
+  });
+});
+</code></pre>
+<h3><a class="anchor" aria-hidden="true" id="packagejson"></a><a href="#packagejson" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>package.json</h3>
+<pre><code class="hljs css language-json">{
+  <span class="hljs-attr">"name"</span>: <span class="hljs-string">"example-serverless"</span>,
+  <span class="hljs-attr">"version"</span>: <span class="hljs-string">"0.0.0"</span>,
+  <span class="hljs-attr">"description"</span>: <span class="hljs-string">""</span>,
+  <span class="hljs-attr">"private"</span>: <span class="hljs-literal">true</span>,
+  <span class="hljs-attr">"main"</span>: <span class="hljs-string">"index.js"</span>,
+  <span class="hljs-attr">"scripts"</span>: {
+    <span class="hljs-attr">"start"</span>: <span class="hljs-string">"node bin/www"</span>,
+    <span class="hljs-attr">"test"</span>: <span class="hljs-string">"PORT=7000 jest  --coverage --runInBand"</span>,
+    <span class="hljs-attr">"serverless"</span>: <span class="hljs-string">"sls offline start"</span>,
+    <span class="hljs-attr">"deploy"</span>: <span class="hljs-string">"sls deploy"</span>,
+    <span class="hljs-attr">"remove"</span>: <span class="hljs-string">"sls remove"</span>
+  },
+  <span class="hljs-attr">"keywords"</span>: [
+    <span class="hljs-string">"graphql"</span>,
+    <span class="hljs-string">"node.js"</span>,
+    <span class="hljs-string">"skazka"</span>,
+    <span class="hljs-string">"cors"</span>,
+    <span class="hljs-string">"serverless"</span>
+  ],
+  <span class="hljs-attr">"author"</span>: <span class="hljs-string">"skazkajs"</span>,
+  <span class="hljs-attr">"license"</span>: <span class="hljs-string">"MIT"</span>,
+  <span class="hljs-attr">"dependencies"</span>: {
+    <span class="hljs-attr">"@skazka/server"</span>: <span class="hljs-string">"&gt;=0.0.0"</span>,
+    <span class="hljs-attr">"@skazka/server-body-parser"</span>: <span class="hljs-string">"&gt;=0.0.0"</span>,
+    <span class="hljs-attr">"@skazka/server-cors"</span>: <span class="hljs-string">"&gt;=0.0.0"</span>,
+    <span class="hljs-attr">"@skazka/server-graphql"</span>: <span class="hljs-string">"&gt;=0.0.0"</span>,
+    <span class="hljs-attr">"@skazka/server-http"</span>: <span class="hljs-string">"&gt;=0.0.0"</span>,
+    <span class="hljs-attr">"@skazka/server-init"</span>: <span class="hljs-string">"&gt;=0.0.0"</span>,
+    <span class="hljs-attr">"@skazka/server-router"</span>: <span class="hljs-string">"&gt;=0.0.0"</span>,
+    <span class="hljs-attr">"aws-serverless-express"</span>: <span class="hljs-string">"&gt;=3.3.5"</span>,
+    <span class="hljs-attr">"axios"</span>: <span class="hljs-string">"&gt;=0.18.0"</span>,
+    <span class="hljs-attr">"debug"</span>: <span class="hljs-string">"&gt;=4.0.0"</span>,
+    <span class="hljs-attr">"graphql"</span>: <span class="hljs-string">"&gt;=14.0.0"</span>,
+    <span class="hljs-attr">"jest"</span>: <span class="hljs-string">"&gt;=23.6.0"</span>,
+    <span class="hljs-attr">"serverless"</span>: <span class="hljs-string">"&gt;=1.36.1"</span>,
+    <span class="hljs-attr">"serverless-offline"</span>: <span class="hljs-string">"&gt;=3.33.0"</span>
+  }
+}
+</code></pre>
+<h3><a class="anchor" aria-hidden="true" id="bin-www"></a><a href="#bin-www" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>bin/www</h3>
+<pre><code class="hljs"><span class="hljs-meta">#!/usr/bin/env node</span>
+
+<span class="hljs-keyword">const</span> server = <span class="hljs-built_in">require</span>(<span class="hljs-string">'@skazka/server-http'</span>);
+<span class="hljs-keyword">const</span> app = <span class="hljs-built_in">require</span>(<span class="hljs-string">'..'</span>);
+
+server.createHttpServer(app);
+</code></pre>
+<h3><a class="anchor" aria-hidden="true" id="indexjs"></a><a href="#indexjs" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>index.js</h3>
+<pre><code class="hljs css language-javascript"><span class="hljs-keyword">const</span> awsServerlessExpress = <span class="hljs-built_in">require</span>(<span class="hljs-string">'aws-serverless-express'</span>);
+
+<span class="hljs-keyword">const</span> app = <span class="hljs-built_in">require</span>(<span class="hljs-string">'./app'</span>);
+
+<span class="hljs-built_in">module</span>.exports.handler = <span class="hljs-function">(<span class="hljs-params">event, context</span>) =&gt;</span> awsServerlessExpress.proxy(
+  awsServerlessExpress.createServer(app.resolve()),
+  event,
+  context,
+);
+</code></pre>
+<h3><a class="anchor" aria-hidden="true" id="serverlessyml"></a><a href="#serverlessyml" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>serverless.yml</h3>
+<pre><code class="hljs css language-yaml"><span class="hljs-attr">service:</span> <span class="hljs-string">serverless-example</span>
+
+<span class="hljs-attr">plugins:</span>
+<span class="hljs-bullet">  -</span> <span class="hljs-string">serverless-offline</span>
+
+<span class="hljs-attr">provider:</span>
+<span class="hljs-attr">  name:</span> <span class="hljs-string">aws</span>
+<span class="hljs-attr">  runtime:</span> <span class="hljs-string">nodejs8.10</span>
+<span class="hljs-attr">  stage:</span> <span class="hljs-string">dev</span>
+<span class="hljs-attr">  region:</span> <span class="hljs-string">eu-central-1</span>
+
+<span class="hljs-attr">functions:</span>
+<span class="hljs-attr">  app:</span>
+<span class="hljs-attr">    handler:</span> <span class="hljs-string">index.handler</span>
+<span class="hljs-attr">    events:</span>
+<span class="hljs-attr">      - http:</span> <span class="hljs-string">ANY</span> <span class="hljs-string">/</span>
+<span class="hljs-attr">      - http:</span> <span class="hljs-string">'ANY {proxy+}'</span>
+
+</code></pre>
+<h2><a class="anchor" aria-hidden="true" id="commands"></a><a href="#commands" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Commands</h2>
+<h3><a class="anchor" aria-hidden="true" id="run-app"></a><a href="#run-app" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Run app</h3>
+<pre><code class="hljs">npm start
+</code></pre>
+<p>Or</p>
+<pre><code class="hljs">yarn start
+</code></pre>
+<h3><a class="anchor" aria-hidden="true" id="test-app"></a><a href="#test-app" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Test app</h3>
+<pre><code class="hljs">npm test
+</code></pre>
+<p>Or</p>
+<pre><code class="hljs">yarn test
+</code></pre>
+<h3><a class="anchor" aria-hidden="true" id="run-app-using-serverless"></a><a href="#run-app-using-serverless" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Run app using serverless</h3>
+<pre><code class="hljs">npm run serverless
+</code></pre>
+<p>Or</p>
+<pre><code class="hljs">yarn serverless
+</code></pre>
+<h3><a class="anchor" aria-hidden="true" id="run-app-using-aws-lambda"></a><a href="#run-app-using-aws-lambda" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Run app using AWS lambda</h3>
+<pre><code class="hljs">npm run deploy
+</code></pre>
+<p>Or</p>
+<pre><code class="hljs">yarn deploy
+</code></pre>
+<h3><a class="anchor" aria-hidden="true" id="clear-aws-lambda"></a><a href="#clear-aws-lambda" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Clear AWS lambda</h3>
+<pre><code class="hljs">npm run remove
+</code></pre>
+<p>Or</p>
+<pre><code class="hljs">yarn remove    
+</code></pre>
+<h2><a class="anchor" aria-hidden="true" id="more-docs"></a><a href="#more-docs" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>More docs</h2>
+<ul>
+<li><a href="https://skazkajs.org/server">Server</a></li>
+<li><a href="https://skazkajs.org/server/init">Server init</a></li>
+<li><a href="https://skazkajs.org/server/graphql">Server GraphQL</a></li>
+<li><a href="https://skazkajs.org/server/router">Server Router</a></li>
+<li><a href="https://skazkajs.org/server/body-parser">Server Body Parser</a></li>
+<li><a href="https://skazkajs.org/server/cors">Server CORS</a></li>
+<li><a href="https://skazkajs.org/server/http">Server HTTPS(S)</a></li>
+<li><a href="https://www.npmjs.com/package/graphql">GraphQL.js</a></li>
+<li><a href="https://serverless.com/">Serverless</a></li>
+<li><a href="https://www.npmjs.com/package/serverless-offline">Serverless offline</a></li>
+<li><a href="https://www.npmjs.com/package/aws-serverless-express">AWS Serverless Express</a></li>
+<li><a href="https://serverless.com/framework/docs/providers/aws/guide/credentials/">AWS - Credentials</a></li>
+</ul>
+<h2><a class="anchor" aria-hidden="true" id="copy-from-git"></a><a href="#copy-from-git" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Copy from git</h2>
+<p>Clone:</p>
+<pre><code class="hljs">git clone https://github.com/skazkajs/skazka.git
+cd skazka/examples/serverless
+</code></pre>
+<p>Install:</p>
+<pre><code class="hljs">npm i
+</code></pre>
+<p>Or</p>
+<pre><code class="hljs">yarn
+</code></pre>
+<p>And run <strong>start</strong>, <strong>test</strong>, <strong>serverless</strong>, <strong>deploy</strong> or <strong>remove</strong> <a href="#commands">commands</a>.</p>
+</span></div></article></div><div class="docs-prevnext"><a class="docs-prev button" href="/examples/graphql"><span class="arrow-prev">← </span><span class="function-name-prevnext">GraphQL</span></a><a class="docs-next button" href="/examples/spa"><span>SPA</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#how-to-install">How to install</a></li><li><a href="#how-to-use">How to use</a><ul class="toc-headings"><li><a href="#db-indexjs">db/index.js</a></li><li><a href="#graphql-indexjs">graphql/index.js</a></li><li><a href="#router-indexjs">router/index.js</a></li><li><a href="#app-indexjs">app/index.js</a></li><li><a href="#indextestjs">index.test.js</a></li><li><a href="#packagejson">package.json</a></li><li><a href="#bin-www">bin/www</a></li><li><a href="#indexjs">index.js</a></li><li><a href="#serverlessyml">serverless.yml</a></li></ul></li><li><a href="#commands">Commands</a><ul class="toc-headings"><li><a href="#run-app">Run app</a></li><li><a href="#test-app">Test app</a></li><li><a href="#run-app-using-serverless">Run app using serverless</a></li><li><a href="#run-app-using-aws-lambda">Run app using AWS lambda</a></li><li><a href="#clear-aws-lambda">Clear AWS lambda</a></li></ul></li><li><a href="#more-docs">More docs</a></li><li><a href="#copy-from-git">Copy from git</a></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="copyright">Copyright © 2019 SkazkaJS</section></footer></div></body></html>
